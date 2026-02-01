@@ -1,0 +1,97 @@
+﻿@model MachineTest2026.CustomeModel.EmpModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DetailsEmp</title>
+</head>
+<body>
+
+    <div>
+        <h4>EmpModel</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MobNo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MobNo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmailId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmailId)
+            </dd>
+           
+           
+            
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Active)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+
+           
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CountryName)
+            </dt>
+            <dd class="col-sm-10">
+                <select asp-for="CountryId" asp-items="ViewBag.CountryId">
+                    <option value="0">
+                        --Select--
+                    </option>
+                </select>
+            </dd>
+
+           
+
+         
+
+            <dt class="col-sm-2">
+                Files
+            </dt>
+            <dd class="col-sm-10">
+                @if (Model.ShowFileList.Count > 0)
+                {
+                    @foreach (var temp in Model.ShowFileList)
+                    {
+                        <a href="@temp">Download</a>
+                    }
+                }
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Dashboard">Back to List</a>
+    </div>
+</body>
+</html>
+

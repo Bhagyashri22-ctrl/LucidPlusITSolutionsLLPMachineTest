@@ -1,0 +1,110 @@
+﻿
+<script src="~/jquery/jquery.min.js"></script>
+
+
+@model MachineTest2026.CustomeModel.EmpModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>InserEmp</title>
+
+    
+<div class="row">
+    <div class="col">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                @TempData["Message"]
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close">
+                </button>
+            </div>
+        }
+    </div>
+</div>
+</head>
+<body>
+
+    <h4>EmpModel</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="InserEmp" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MobNo" class="control-label"></label>
+                    <input asp-for="MobNo" class="form-control" />
+                    <span asp-validation-for="MobNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+
+
+                    <label asp-for="EmailId" class="control-label"></label>
+                    <input asp-for="EmailId" class="form-control" />
+                    <span asp-validation-for="EmailId" class="text-danger"></span>
+                </div>
+                
+              
+                
+
+                <div class="form-group">
+                    <label class="control-label">Select Country</label>
+
+                    <select asp-for="CountryId" asp-items="ViewBag.CountryId">
+                        <option value="0">
+                            --Select--
+                        </option>
+                    </select>
+                    <span asp-validation-for="CountryId" class="text-danger"></span>
+                </div>
+
+              
+
+
+
+                <div class="form-group">
+                    <label class="control-label">Upload Image</label>
+
+                    <input type="file" class="form-check-input" asp-for="UploadFileList" multiple />
+
+                    <span asp-validation-for="UploadFileList" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
+
+
+
+
+
+    </div>
+
+
+    <div>
+        <a asp-action="DashBoard">Back to List</a>
+    </div>
+
+</body>
+</html>
+
