@@ -1,0 +1,121 @@
+﻿@model IEnumerable<MachineTest2026.CustomeModel.EmpModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DashBoard</title>
+
+    <h2>WelCome</h2>
+</head>
+<body>
+    <p>
+        <a asp-action="InserEmp">Create New</a>| <a asp-action="SignOut">SignOut</a>
+    </p>
+    <table class="table" border="1">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MobNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailId)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CountryName)
+                </th>
+
+
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
+                    Image
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var srno = 1;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                     @srno
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MobNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailId)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CountryName)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @if (item.ShowFileList.Count > 0)
+                        {
+                            @foreach (var temp in item.ShowFileList)
+                            {
+                                  <img src="@temp"  height="50" width="50" alt="Not found"/>
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="EditEmp" asp-area="EmpMVC" asp-route-id="@item.Id">Edit</a>|
+                        <a asp-action="DeleteEmp" asp-area="EmpMVC" asp-route-id="@item.Id" onclick="return confirm('Are You Sure You Want To Dalete @item.Name?')">Delete</a>|
+                        <a asp-action="DetailsEmp" asp-area="EmpMVC" asp-route-id="@item.Id">Details</a>
+
+                    </td>
+                </tr>
+                srno++;
+            }
+        </tbody>
+    </table>
+</body>
+</html>
